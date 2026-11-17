@@ -14,10 +14,10 @@ The intended audience is students, young adults and international tenants in Fin
 
 | Area | Intended value | Submission status |
 | --- | --- | --- |
-| Household bills | Add/edit/delete bills, see monthly due totals, and record payments made elsewhere | Implemented; browser test pending |
+| Household bills | Add/edit/delete bills, see overdue, upcoming and paid groups, and record payments made elsewhere | Implemented; browser test pending. Gmail/provider integrations are future work |
 | Apartment records | Find room-by-room move-in and move-out photos and notes | Implemented in local prototype |
 | Moving and deposit | Follow tasks and record deposit progress | Implemented; final browser tests pending |
-| Local benefits | Browse restaurant, grocery and service examples with terms and expiry | Sample offers implemented; fictional only |
+| Local benefits | Browse an illustrative area map and sample restaurant, grocery and service offers | Map and offers implemented; fictional locations and offers only |
 
 ## Run the prototype
 
