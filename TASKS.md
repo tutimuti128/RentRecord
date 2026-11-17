@@ -32,9 +32,9 @@ Implemented means code exists. Verified means the stated test was completed. Pla
 
 ## Implemented; verification pending
 
-- [x] B12 Manual household bills: add/edit/delete, due dates and self-reported status (M9, AT-10); browser verification pending.
+- [x] B12 Manual household bills: add/edit/delete, due dates, self-reported status and clearer status groups (M9, AT-10); browser verification pending.
 - [x] B13 Monthly expense summary by due month, with paid/outstanding totals and overdue labels (M10, AT-11); browser verification pending.
-- [x] B14 Local-benefits screen with fictional, not-redeemable sample offers (M11, AT-12); browser verification pending.
+- [x] B14 Local-benefits screen with an illustrative neighbourhood map and fictional, not-redeemable sample offers (M11, AT-12); browser verification pending.
 
 ## Planned product work
 
@@ -44,10 +44,10 @@ Implemented means code exists. Verified means the stated test was completed. Pla
 
 ## Submission
 
-- [x] Runnable source ZIP attached in src.
+- [x] Runnable source code is available in `src` on GitHub.
 - [x] README contains startup, demonstration data and limitations.
 - [x] Presentation outline and concept flow prepared in the project documentation.
-- [ ] Add the actual GitHub repository URL and upload documentation/code there.
+- [x] Publish the documentation and code to the GitHub repository: https://github.com/tutimuti128/RentRecord.
 - [ ] Run outstanding browser acceptance tests; record failures honestly.
 - [ ] Rehearse the demonstration.
 - [ ] Submit through Moodle in its required format.
@@ -74,4 +74,4 @@ Implemented means code exists. Verified means the stated test was completed. Pla
 | AT-11 Monthly summary | Implemented; browser test pending | Due-month totals for total, marked paid, outstanding and overdue |
 | AT-12 Local offers | Sample screen implemented; browser test pending | Fictional examples labelled not redeemable; no partner agreements claimed |
 
-Previously recorded automated results refer to the 10 November 2026 run. New bills and sample-benefits screens were added on 17 November 2026 and have not yet been browser-tested. No completed interviews, verified payments, measured savings or partner contracts are claimed.
+Previously recorded automated results refer to the 10 November 2026 run. New bills and sample-benefits screens were added on 17 November 2026 and have not yet been browser-tested. No completed interviews, verified payments, measured savings or partner contracts are claimed. Automatic Gmail, e-invoice, supplier and bank-payment integrations are future roadmap items and are not implemented.
