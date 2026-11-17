@@ -2,13 +2,13 @@
 
 ## 1. Selected idea
 
-RentRecord is a tenant workspace for household bills, apartment records and moving responsibilities. Planned local benefits connect tenants with nearby restaurants, groceries and services. Its central purpose is to make rental information easier to organise, find and act on.
+RentRecord is a tenant workspace for household bills, apartment records and moving responsibilities. Local benefits are shown in the prototype as an illustrative map with fictional offers from sample restaurants, groceries and services; real partners remain a future possibility. Its central purpose is to make rental information easier to organise, find and act on.
 
 ## 2. Four-quadrant brainstorm
 
 | Features | Target audience |
 | --- | --- |
-| Structured household bills and monthly overview | Students and young adult tenants |
+| Structured bills grouped by overdue, coming-up and marked-paid status | Students and young adult tenants |
 | Move-in/out photos, condition notes and comparison | International tenants in Finland |
 | Move-out checklist and deposit timeline | Tenants managing several household bills |
 | Planned local restaurant, grocery and service offers | Local businesses as prospective partners |
