@@ -21,7 +21,7 @@ Primary audience: students, young adults and international tenants renting in Fi
 
 ## 3. Scope and delivery status
 
-The product vision has three areas: Home and bills; Apartment records and moving; Local benefits. The local prototype implements apartment records, deposit tracking, manual bill tracking and a sample local-benefits screen. The new bills and benefits screens still need browser acceptance testing.
+The product vision has three areas: Home and bills; Apartment records and moving; Local benefits. The local prototype implements apartment records, deposit tracking, manually entered bills grouped by due status, and an illustrative neighbourhood map with fictional local offers. Gmail, supplier and payment integrations remain future work. Browser acceptance testing of the bills and benefits screens is still pending.
 
 Manual entry is the initial scope for bills. Users pay through their usual external services; a paid label does not verify settlement. Partner offers require actual agreements before public use. No points system or payment-based reward is included.
 
@@ -40,12 +40,21 @@ Existing identifiers are retained for traceability.
 | M7 | Editable Finnish and English deposit request drafts | Implemented; browser test pending |
 | M8 | Printable tenancy record: details, reports, checklist and deposit history | Implemented; print verification pending |
 | M9 | Manual bills: provider, category, amount, due date, month derived from due date and self-reported payment status; add/edit/delete | Implemented; browser test pending |
-| M10 | Monthly bills summary: total, marked paid, outstanding and overdue labels, filtered by due month | Implemented; browser test pending |
-| M11 | Local offers: sample listings show business label, category, location, benefit, terms and expiry | Fictional sample listings implemented; not redeemable; no confirmed partners |
+| M10 | Monthly bills summary: total, marked paid, outstanding and overdue/upcoming groups, filtered by due month and status | Implemented; browser test pending |
+| M11 | Local offers: illustrative neighbourhood map and sample listings show area, category, benefit, terms and expiry | Fictional map pins and offers implemented; no exact addresses, confirmed partners or redeemable offers |
 
-Future options: landlord confirmation, shared-household access, recurring bills and full Finnish/English interface. Shared bill splitting is not assumed in the initial scope.
+Future options: a user-approved Gmail import that extracts candidate bill details for review; authorised e-invoice or supplier data connections where available; then evaluation of a licensed payment-service integration if payment is ever included. Later options also include landlord confirmation, shared-household access, recurring bills and full Finnish/English interface. Shared bill splitting is not assumed in the initial scope.
 
-## 5. Non-goals
+## 5. Future integration plan
+
+1. **Prototype now:** keep manual entry; document the proposed import flow with fictional examples.
+2. **Email import:** obtain explicit user consent, access only the necessary messages, identify candidate bills, extract provider/amount/due date/category, and require user review before saving. Add secure token storage, deletion/revocation and privacy review before connecting a real account.
+3. **Provider/e-invoice data:** assess authorised Finnish e-invoice or supplier-partner options; do not imply a single connection covers every electricity company.
+4. **Payments:** keep payment in the user's bank at first. Consider a properly authorised payment provider only after legal, security and partner assessment. The product must not store bank credentials or claim a bill was paid without confirmation.
+
+Each step depends on user validation, technical feasibility, partner access and privacy/security review. None of these integrations is implemented in the current prototype.
+
+## 6. Non-goals
 
 Payment execution, banking or e-invoice integrations, real reward points, automatic legal judgement, filing disputes, guaranteed deposit recovery, native mobile apps and automatic proof of payment. No business success or uniqueness claim is made.
 
@@ -72,8 +81,8 @@ The checklist and deposit tracker are separate in the prototype: checking the ke
 | Addendum | report, note, server creation time | Implemented |
 | Checklist | tenancy, task states and move-out details | Implemented in journey storage |
 | Deposit event | tenancy, stage, server time | Implemented in journey storage |
-| Bill | owner, tenancy, provider, category, amount, due date, month, payment label | Planned |
-| Partner and offer | business, location, category, benefit, terms, validity | Planned |
+| Bill | owner, tenancy, provider, category, amount, due date, month, payment label | Implemented; browser test pending |
+| Partner and offer | business, location, category, benefit, terms, validity | Fictional sample offers only; no confirmed partners |
 
 The implementation uses SQLite; some journey information is stored as JSON rather than separate entity tables.
 
