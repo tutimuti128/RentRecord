@@ -30,11 +30,14 @@ Implemented means code exists. Verified means the stated test was completed. Pla
 | B10 Authentication and privacy | Partial | Ownership functions tested; fixed demo identity, no genuine second-user test |
 | B11 Complete demo tenancy | Planned | No complete seeded tenancy included |
 
-## Planned product work
+## Implemented; verification pending
 
 - [x] B12 Manual household bills: add/edit/delete, due dates and self-reported status (M9, AT-10); browser verification pending.
 - [x] B13 Monthly expense summary by due month, with paid/outstanding totals and overdue labels (M10, AT-11); browser verification pending.
 - [x] B14 Local-benefits screen with fictional, not-redeemable sample offers (M11, AT-12); browser verification pending.
+
+## Planned product work
+
 - [ ] Validate local partner interest; do not describe prospects as agreed partners.
 - [ ] Optional landlord confirmation, shared access, recurring bills and interface translation.
 - [ ] Real authentication, deletion/retention controls and production privacy review before deployment.
