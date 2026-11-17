@@ -5,7 +5,7 @@
 | 0:00–0:45 | Problem and audience | Tenants need to manage bills, apartment information and moving responsibilities. Fragmentation is our problem hypothesis. |
 | 0:45–1:30 | Product value | One organised home workspace: expenses, records and tasks; local benefits are an additional product area with fictional examples in the prototype. |
 | 1:30–3:30 | Working demonstration | Create fictional tenancy; save room photos/notes; show finalisation, checklist, comparison and deposit timeline; open print export if rehearsed. |
-| 3:30–4:15 | Product vision | Show the bills screen and monthly totals; explain payment status is self-reported. Show sample local offers and state clearly that they are fictional and not redeemable. |
+| 3:30–4:15 | Product vision | Show the bills screen grouped into overdue, coming up and marked paid; explain entries are manual and payment status is self-reported. Open the future integrations roadmap. Show the illustrative map and sample local offers; state that all names, areas and offers are fictional and not redeemable. |
 | 4:15–5:00 | AI use and limits | AI helped draft requirements, code and checks. The author ran the prototype and confirmed setup and report persistence. Explain pending verification and next validation step. |
 
 ## Opening
@@ -14,7 +14,7 @@
 
 ## Demonstration boundaries
 
-The live code covers apartment records, deposit tracking and manual bill tracking. The local-benefits screen uses fictional, non-redeemable examples. No actual partners, measured savings, proven demand or guaranteed deposit recovery are claimed. Use fictional tenancy data. Bills and offers were added recently and still need browser acceptance testing. Rehearse finalisation and export before relying on them live.
+The live code covers apartment records, deposit tracking and manual bill tracking organised by due status. The local-benefits screen contains an illustrative neighbourhood map and fictional, non-redeemable offers. Gmail, electricity-provider and payment integrations are roadmap concepts only. No actual partners, measured savings, proven demand or guaranteed deposit recovery are claimed. Use fictional tenancy data. Bills and offers were added recently and still need browser acceptance testing. Rehearse finalisation and export before relying on them live.
 
 ## Questions and answers
 
@@ -27,18 +27,11 @@ The live code covers apartment records, deposit tracking and manual bill trackin
 | What did you change? | I defined the target user and scope, reviewed the flow and tested the prototype. Specific implementation changes should be described only if I can explain them. |
 | How would it earn revenue? | Partner listing fees or referral commissions are hypotheses to test, not established income. |
 | What is unfinished? | Real authentication, actual partner agreements, complete demo seeding and browser verification of the new bills/offers screens and print output. |
-| What comes next? | Verify the bills and offers screens in the browser; observe five tenants' current methods; ask prospective businesses what offers they could support. |
+| What comes next? | Verify the reorganised bills screen and illustrative offers map in the browser; define and validate an authorised bill-import approach; observe five tenants' current methods; ask prospective businesses what offers they could support. |
 
-## GitHub preparation
+## Repository and final submission
 
-Create or open the intended repository, then add the application and documentation. A GitHub account alone is not a submitted repository.
-
-Suggested structure:
-
-- `README.md`, `PRD.md`, `BRAINSTORM.md`, `TASKS.md` and `AGENTS.md` at the repository root.
-- docs/ for the flow and presentation guide.
-- notes/`interviews.md` for the honest research-status note.
-- src/ for the nine application files from the code ZIP.
+The current project files are published at [github.com/tutimuti128/RentRecord](https://github.com/tutimuti128/RentRecord). Use the latest `main` branch. To start the app from the repository folder, run `python3 src/app.py`.
 
 Do not upload personal databases, real apartment photos, credentials or caches. Use this .gitignore:
 
@@ -54,7 +47,7 @@ __pycache__/
 .DS_Store
 ```
 
-Repository URL: https://github.com/tutimuti128/RentRecord. Give the assessor access if the repository is private. Download the code ZIP from src, extract its files and retain their relative arrangement. Download the revised Markdown documents from this guide's attachments or export the project pages from Notion.
+If the repository is private, give the assessor access. Download the current repository ZIP when you need a copy of the code and documentation; preserve the folder structure.
 
 ## Final submission check
 
