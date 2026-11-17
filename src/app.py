@@ -102,9 +102,10 @@ def add_addendum(db,data):
 
 BILL_CATEGORIES=['Rent','Electricity','Water','Internet','Insurance','Other']
 OFFERS=[
-    {'id':'sample-cafe','business':'Harbor Café (sample)','category':'Restaurant','location':'Helsinki','benefit':'10% off one coffee and pastry','terms':'Example offer for the prototype. Not redeemable.','expires':'2027-12-31'},
-    {'id':'sample-market','business':'Market Corner (sample)','category':'Groceries','location':'Espoo','benefit':'€3 off a €25 basket','terms':'Example offer for the prototype. Not redeemable.','expires':'2027-12-31'},
-    {'id':'sample-laundry','business':'FreshFold Laundry (sample)','category':'Home services','location':'Helsinki','benefit':'First wash 15% off','terms':'Example offer for the prototype. Not redeemable.','expires':'2027-12-31'},
+    {'id':'sample-cafe','business':'Matinkylä Coffee Corner (fictional)','category':'Restaurant & café','location':'Matinkylä, Espoo · sample area','benefit':'10% off one coffee and pastry','terms':'Illustrative offer only; fictional business and location; not redeemable.','expires':'2027-12-31','map_x':21,'map_y':75},
+    {'id':'sample-market','business':'Tapiola Green Market (fictional)','category':'Groceries','location':'Tapiola, Espoo · sample area','benefit':'€3 off a €25 grocery basket','terms':'Illustrative offer only; fictional business and location; not redeemable.','expires':'2027-12-31','map_x':38,'map_y':49},
+    {'id':'sample-dinner','business':'Kamppi Table (fictional)','category':'Restaurant','location':'Kamppi, Helsinki · sample area','benefit':'10% off a weekday dinner','terms':'Illustrative offer only; fictional business and location; not redeemable.','expires':'2027-12-31','map_x':81,'map_y':35},
+    {'id':'sample-laundry','business':'Lauttasaari FreshFold (fictional)','category':'Home services','location':'Lauttasaari, Helsinki · sample area','benefit':'15% off your first laundry service','terms':'Illustrative offer only; fictional business and location; not redeemable.','expires':'2027-12-31','map_x':60,'map_y':62},
 ]
 
 def validate_bill(data):
