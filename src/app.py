@@ -100,6 +100,55 @@ def add_addendum(db,data):
     db.execute("INSERT INTO addenda(id,report_id,note,created_at) VALUES (?,?,?,strftime('%Y-%m-%dT%H:%M:%fZ','now'))",(secrets.token_urlsafe(16),row['id'],note.strip()))
     return read_report(db,data['tenancy'])
 
+BILL_CATEGORIES=['Rent','Electricity','Water','Internet','Insurance','Other']
+OFFERS=[
+    {'id':'sample-cafe','business':'Harbor Café (sample)','category':'Restaurant','location':'Helsinki','benefit':'10% off one coffee and pastry','terms':'Example offer for the prototype. Not redeemable.','expires':'2027-12-31'},
+    {'id':'sample-market','business':'Market Corner (sample)','category':'Groceries','location':'Espoo','benefit':'€3 off a €25 basket','terms':'Example offer for the prototype. Not redeemable.','expires':'2027-12-31'},
+    {'id':'sample-laundry','business':'FreshFold Laundry (sample)','category':'Home services','location':'Helsinki','benefit':'First wash 15% off','terms':'Example offer for the prototype. Not redeemable.','expires':'2027-12-31'},
+]
+
+def validate_bill(data):
+    tenancy=data.get('tenancy')
+    if not isinstance(tenancy,str) or not tenancy: raise ValueError('Choose a tenancy.')
+    if not isinstance(data.get('provider'),str) or not 1<=len(data['provider'].strip())<=120: raise ValueError('Enter a provider name.')
+    category=data.get('category')
+    if category not in BILL_CATEGORIES: raise ValueError('Choose a valid bill category.')
+    try:
+        amount=Decimal(str(data.get('amount','')))
+        if not amount.is_finite() or amount<=0 or amount>10000000 or amount*100 != (amount*100).to_integral_value(): raise ValueError('Enter a positive amount with up to two decimals.')
+        due=date.fromisoformat(data.get('due_date',''))
+    except (InvalidOperation,TypeError): raise ValueError('Enter a valid amount and due date.')
+    note=data.get('note','')
+    if not isinstance(note,str) or len(note)>500: raise ValueError('Note must be under 500 characters.')
+    return tenancy,data['provider'].strip(),category,int(amount*100),due.isoformat(),note.strip()
+
+def get_bills(db,tenancy):
+    if not db.execute('SELECT id FROM tenancies WHERE id=? AND owner_id=?',(tenancy,ACTOR)).fetchone(): raise PermissionError('Tenancy unavailable')
+    return [dict(r) for r in db.execute('SELECT id,provider,category,amount_cents,due_date,paid,note,created_at FROM bills WHERE tenancy_id=? ORDER BY due_date,created_at',(tenancy,))]
+
+def create_bill(db,data):
+    tenancy,provider,category,amount,due,note=validate_bill(data)
+    if not db.execute('SELECT id FROM tenancies WHERE id=? AND owner_id=?',(tenancy,ACTOR)).fetchone(): raise PermissionError('Tenancy unavailable')
+    bill_id=secrets.token_urlsafe(16)
+    db.execute('INSERT INTO bills(id,tenancy_id,provider,category,amount_cents,due_date,note) VALUES(?,?,?,?,?,?,?)',(bill_id,tenancy,provider,category,amount,due,note))
+    return get_bills(db,tenancy)
+
+def update_bill(db,data):
+    tenancy=data.get('tenancy');bill_id=data.get('bill_id');action=data.get('action')
+    if not isinstance(tenancy,str) or not isinstance(bill_id,str): raise ValueError('Invalid bill.')
+    if not db.execute('SELECT id FROM tenancies WHERE id=? AND owner_id=?',(tenancy,ACTOR)).fetchone(): raise PermissionError('Tenancy unavailable')
+    row=db.execute('SELECT id FROM bills WHERE id=? AND tenancy_id=?',(bill_id,tenancy)).fetchone()
+    if not row: raise PermissionError('Bill unavailable')
+    if action=='edit':
+        _,provider,category,amount,due,note=validate_bill(data)
+        if data.get('tenancy')!=tenancy: raise ValueError('Tenancy mismatch.')
+        db.execute('UPDATE bills SET provider=?,category=?,amount_cents=?,due_date=?,note=? WHERE id=? AND tenancy_id=?',(provider,category,amount,due,note,bill_id,tenancy))
+    elif action=='paid': db.execute('UPDATE bills SET paid=1 WHERE id=? AND tenancy_id=?',(bill_id,tenancy))
+    elif action=='unpaid': db.execute('UPDATE bills SET paid=0 WHERE id=? AND tenancy_id=?',(bill_id,tenancy))
+    elif action=='delete': db.execute('DELETE FROM bills WHERE id=? AND tenancy_id=?',(bill_id,tenancy))
+    else: raise ValueError('Invalid bill action.')
+    return get_bills(db,tenancy)
+
 CHECKLIST=['Cleaning done','Meter readings noted','All keys returned','Forwarding address given','Final inspection date booked','Move-out photos taken']
 STAGES=['Not yet moved out','Keys returned','Deposit requested','Returned in full','Returned in part','Disputed']
 
@@ -159,6 +208,13 @@ class Handler(BaseHTTPRequestHandler):
         if not self.allowed(): return self.reply(403,{'error':'Access denied'})
         if self.path=='/':
             return self.reply(200,(ROOT/'index.html').read_text().replace('__TOKEN__',TOKEN),'text/html')
+        if self.path=='/api/offers': return self.reply(200,OFFERS)
+        if urlparse(self.path).path=='/api/bills':
+            try:
+                tenancy=parse_qs(urlparse(self.path).query).get('tenancy',[''])[0]
+                with connect() as db: result=get_bills(db,tenancy)
+                return self.reply(200,result)
+            except PermissionError: return self.reply(403,{'error':'Tenancy unavailable'})
         if urlparse(self.path).path=='/api/journey':
             try:
                 with connect() as db: result=journey(db,parse_qs(urlparse(self.path).query).get('tenancy',[''])[0])
@@ -178,6 +234,18 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         if not self.allowed() or self.headers.get('X-Demo-Token')!=TOKEN:
             return self.reply(403,{'error':'Access denied; reload the page.'})
+        if self.path=='/api/bills':
+            try:
+                length=int(self.headers.get('Content-Length','0'))
+                if not 0<length<10000: raise ValueError('Invalid request size.')
+                data=json.loads(self.rfile.read(length))
+                with connect() as db:
+                    db.execute('BEGIN IMMEDIATE')
+                    result=create_bill(db,data) if data.get('action','create')=='create' else update_bill(db,data)
+                return self.reply(200,result)
+            except PermissionError: return self.reply(403,{'error':'Bill or tenancy unavailable'})
+            except (ValueError,TypeError,AttributeError) as e: return self.reply(400,{'error':str(e)})
+            except sqlite3.Error: return self.reply(500,{'error':'Could not save bill.'})
         if self.path=='/api/journey':
             try:
                 length=int(self.headers.get('Content-Length','0'))
@@ -233,6 +301,7 @@ if __name__=='__main__':
         db.execute("INSERT OR IGNORE INTO users VALUES ('demo','Demo Tenant','tenant@example.test','tenant')")
         db.executescript((ROOT/'locking.sql').read_text())
         db.execute('CREATE TABLE IF NOT EXISTS journeys(tenancy_id TEXT PRIMARY KEY REFERENCES tenancies(id) ON DELETE CASCADE,payload TEXT NOT NULL)')
+        db.execute("CREATE TABLE IF NOT EXISTS bills(id TEXT PRIMARY KEY,tenancy_id TEXT NOT NULL REFERENCES tenancies(id) ON DELETE CASCADE,provider TEXT NOT NULL,category TEXT NOT NULL,amount_cents INTEGER NOT NULL,due_date TEXT NOT NULL,paid INTEGER NOT NULL DEFAULT 0 CHECK(paid IN (0,1)),note TEXT NOT NULL DEFAULT '',created_at TEXT NOT NULL DEFAULT(strftime('%Y-%m-%dT%H:%M:%fZ','now')))")
     server=HTTPServer(('127.0.0.1',8000),Handler)
     print('RentRecord: http://127.0.0.1:8000 — Ctrl+C to stop',flush=True)
     webbrowser.open('http://127.0.0.1:8000')

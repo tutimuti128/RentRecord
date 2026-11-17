@@ -1,7 +1,7 @@
 # RentRecord — complete local course demo
 
 ## Product scope
-RentRecord brings household bills, apartment records and local benefits into one product vision. This source implements apartment records and deposit tracking; bills and partner offers are planned. See the root PRD for scope.
+RentRecord brings household bills, apartment records and local benefits into one product vision. This source implements apartment records, deposit tracking and manual bill tracking. A local-benefits screen shows fictional, not-redeemable examples. No real partner agreements are included. See the root PRD for scope.
 
 ## Launch on your Mac
 From the repository root, run:
@@ -17,7 +17,7 @@ The browser opens http://127.0.0.1:8000. Keep Terminal running. If your extracte
 To retain your old data: stop both apps, copy rentrecord.sqlite3 from your previous version into this folder, and retain the old copy as backup. Database extensions install automatically.
 
 ## Walkthrough
-Create a fictional tenancy. Open it and fill the six-room move-in draft with photos, conditions and notes. Save and finalise it; finalisation is irreversible in the app. Add dated notes if needed. Use Move-out for the six-item checklist, meter/forwarding/inspection details and before-and-after photos. Save before switching sections. Use Deposit to record keys returned, deposit requested and the outcome. Reminder days are your own setting, not a legal deadline; reminders appear only while using the app. Generate an editable English or Finnish request draft, then send it yourself outside the app if appropriate. Export record opens your browser's print dialog; choose Save as PDF.
+Create a fictional tenancy. Add a bill in Bills to see monthly totals, edit it, and mark it paid (self-reported). Browse the fictional offers in Local benefits. Open the tenancy and fill the six-room move-in draft with photos, conditions and notes. Save and finalise it; finalisation is irreversible in the app. Add dated notes if needed. Use Move-out for the six-item checklist, meter/forwarding/inspection details and before-and-after photos. Save before switching sections. Use Deposit to record keys returned, deposit requested and the outcome. Reminder days are your own setting, not a legal deadline; reminders appear only while using the app. Generate an editable English or Finnish request draft, then send it yourself outside the app if appropriate. Export record opens your browser's print dialog; choose Save as PDF.
 
 ## Scope and limits
 This is a local prototype of M1–M8, with simulated single-tenant identity. Real sign-in, multi-user deployment and production privacy controls are not implemented. Use fictional data only. Optional landlord links, rent logs and references are not included. No email or request is sent automatically. Request drafts are not saved; copy them before closing. Photos and tenancy data persist in SQLite on this computer. JPEG/PNG/WebP only; 3 MB each, 10 per room, 20 MB per report. HEIC requires conversion.

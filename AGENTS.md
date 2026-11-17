@@ -6,7 +6,7 @@ RentRecord organises household bills, apartment condition records, moving tasks 
 
 ## Scope
 
-The submitted Python/SQLite prototype implements tenancy records and deposit tracking. Manual bills, monthly summaries and local offer listings are planned M9–M11. Do not describe them as implemented until code and verification support that claim.
+The Python/SQLite prototype implements tenancy records, deposit tracking, manual bills and fictional local-offer examples. Bills and offers are implemented but their browser flows remain unverified. Never present sample offers as real partner agreements.
 
 ## Working approach
 

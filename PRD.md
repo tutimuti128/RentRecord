@@ -21,7 +21,7 @@ Primary audience: students, young adults and international tenants renting in Fi
 
 ## 3. Scope and delivery status
 
-The product vision has three areas: Home and bills; Apartment records and moving; Local benefits. The submitted local prototype implements the apartment-record and deposit workflow. Bills and benefits are planned requirements, not features of the submitted code.
+The product vision has three areas: Home and bills; Apartment records and moving; Local benefits. The local prototype implements apartment records, deposit tracking, manual bill tracking and a sample local-benefits screen. The new bills and benefits screens still need browser acceptance testing.
 
 Manual entry is the initial scope for bills. Users pay through their usual external services; a paid label does not verify settlement. Partner offers require actual agreements before public use. No points system or payment-based reward is included.
 
@@ -39,9 +39,9 @@ Existing identifiers are retained for traceability.
 | M6 | Deposit stages, server-recorded events, elapsed days and user-set reminder | Implemented; some automated coverage |
 | M7 | Editable Finnish and English deposit request drafts | Implemented; browser test pending |
 | M8 | Printable tenancy record: details, reports, checklist and deposit history | Implemented; print verification pending |
-| M9 | Manual bills: provider, category, amount, due date, month and self-reported payment status; edit/delete | Planned |
-| M10 | Monthly bills summary: total, paid, unpaid and overdue; clear filters | Planned |
-| M11 | Local offers: partner, category, location, benefit, terms and expiry; expired offers unavailable | Planned; no confirmed partners |
+| M9 | Manual bills: provider, category, amount, due date, month derived from due date and self-reported payment status; add/edit/delete | Implemented; browser test pending |
+| M10 | Monthly bills summary: total, marked paid, outstanding and overdue labels, filtered by due month | Implemented; browser test pending |
+| M11 | Local offers: sample listings show business label, category, location, benefit, terms and expiry | Fictional sample listings implemented; not redeemable; no confirmed partners |
 
 Future options: landlord confirmation, shared-household access, recurring bills and full Finnish/English interface. Shared bill splitting is not assumed in the initial scope.
 
@@ -53,8 +53,8 @@ Payment execution, banking or e-invoice integrations, real reward points, automa
 
 1. Create a tenancy and open its home overview.
 2. Document rooms at move-in; save and finalise the report.
-3. During the tenancy, use the planned bills section to review due items, record external payments and view monthly totals.
-4. Optionally browse planned local offers and read their conditions.
+3. During the tenancy, add or update bills, review the monthly summary, and mark payments made externally as self-reported.
+4. Optionally browse clearly labelled fictional local-offer examples and read their conditions.
 5. At move-out, complete tasks and compare room photos.
 6. Explicitly record keys returned in the deposit tracker, then deposit requested and its outcome.
 7. Edit a request draft if needed and send it outside the application.
@@ -103,9 +103,9 @@ The implementation uses SQLite; some journey information is stored as JSON rathe
 | AT-07 Export | Printable record contains details, reports, tasks and deposit history |
 | AT-08 Privacy | A genuinely signed-in second user cannot retrieve another user's data |
 | AT-09 Landlord link | Future optional confirmation uses scoped, expiring access |
-| AT-10 Bills | Planned bill CRUD persists; invalid amounts/dates are rejected |
-| AT-11 Summary | Planned monthly totals agree with bill records; payment labels are self-reported |
-| AT-12 Offers | Planned offers show terms/location/expiry; expired offers cannot be used |
+| AT-10 Bills | Bill add/edit/delete persists; invalid amounts/dates are rejected. Implementation present; browser test pending |
+| AT-11 Summary | Monthly totals agree with bill records; overdue and self-reported paid labels display correctly. Implementation present; browser test pending |
+| AT-12 Offers | Fictional demo offers show category/location/terms/expiry and are labelled not redeemable. Implementation present; browser test pending |
 
 TASKS records actual verification. Planned tests are not marked passed.
 

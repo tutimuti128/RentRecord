@@ -3,9 +3,9 @@
 | Time | Topic | What to say or show |
 | --- | --- | --- |
 | 0:00–0:45 | Problem and audience | Tenants need to manage bills, apartment information and moving responsibilities. Fragmentation is our problem hypothesis. |
-| 0:45–1:30 | Product value | One organised home workspace: expenses, records and tasks; local benefits are an additional planned feature. |
+| 0:45–1:30 | Product value | One organised home workspace: expenses, records and tasks; local benefits are an additional product area with fictional examples in the prototype. |
 | 1:30–3:30 | Working demonstration | Create fictional tenancy; save room photos/notes; show finalisation, checklist, comparison and deposit timeline; open print export if rehearsed. |
-| 3:30–4:15 | Product vision | Explain manual household bills, monthly totals and local offers as planned features. |
+| 3:30–4:15 | Product vision | Show the bills screen and monthly totals; explain payment status is self-reported. Show sample local offers and state clearly that they are fictional and not redeemable. |
 | 4:15–5:00 | AI use and limits | AI helped draft requirements, code and checks. The author ran the prototype and confirmed setup and report persistence. Explain pending verification and next validation step. |
 
 ## Opening
@@ -14,7 +14,7 @@
 
 ## Demonstration boundaries
 
-The live code covers apartment records and deposit tracking. Bills and local offers are planned. No partners, measured savings, proven demand or guaranteed deposit recovery are claimed. Use fictional data. Rehearse finalisation and export before relying on them live.
+The live code covers apartment records, deposit tracking and manual bill tracking. The local-benefits screen uses fictional, non-redeemable examples. No actual partners, measured savings, proven demand or guaranteed deposit recovery are claimed. Use fictional tenancy data. Bills and offers were added recently and still need browser acceptance testing. Rehearse finalisation and export before relying on them live.
 
 ## Questions and answers
 
@@ -26,8 +26,8 @@ The live code covers apartment records and deposit tracking. Bills and local off
 | What did AI do? | AI assisted requirements, code generation, checks and documentation. I launched the app and tested saving and reloading. |
 | What did you change? | I defined the target user and scope, reviewed the flow and tested the prototype. Specific implementation changes should be described only if I can explain them. |
 | How would it earn revenue? | Partner listing fees or referral commissions are hypotheses to test, not established income. |
-| What is unfinished? | Bills, partner offers, real authentication, complete demo seeding and final browser/print verification. |
-| What comes next? | Observe five tenants' current methods; test a compact manual bills workflow; ask prospective partners about useful offers. |
+| What is unfinished? | Real authentication, actual partner agreements, complete demo seeding and browser verification of the new bills/offers screens and print output. |
+| What comes next? | Verify the bills and offers screens in the browser; observe five tenants' current methods; ask prospective businesses what offers they could support. |
 
 ## GitHub preparation
 

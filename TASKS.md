@@ -32,9 +32,9 @@ Implemented means code exists. Verified means the stated test was completed. Pla
 
 ## Planned product work
 
-- [ ] B12 Manual household bills: CRUD, due dates and self-reported status (M9, AT-10).
-- [ ] B13 Monthly expense summary and filters (M10, AT-11).
-- [ ] B14 Local offers with business/location/terms/expiry (M11, AT-12).
+- [x] B12 Manual household bills: add/edit/delete, due dates and self-reported status (M9, AT-10); browser verification pending.
+- [x] B13 Monthly expense summary by due month, with paid/outstanding totals and overdue labels (M10, AT-11); browser verification pending.
+- [x] B14 Local-benefits screen with fictional, not-redeemable sample offers (M11, AT-12); browser verification pending.
 - [ ] Validate local partner interest; do not describe prospects as agreed partners.
 - [ ] Optional landlord confirmation, shared access, recurring bills and interface translation.
 - [ ] Real authentication, deletion/retention controls and production privacy review before deployment.
@@ -67,8 +67,8 @@ Implemented means code exists. Verified means the stated test was completed. Pla
 
 | Test | Status | Reason |
 | --- | --- | --- |
-| AT-10 Bills | Not implemented / not tested | Manual bills are planned |
-| AT-11 Monthly summary | Not implemented / not tested | Summary is planned |
-| AT-12 Local offers | Not implemented / not tested | Offers and agreements are planned |
+| AT-10 Bills | Implemented; browser test pending | Added per-tenancy bill records with add/edit/delete and external-payment labels |
+| AT-11 Monthly summary | Implemented; browser test pending | Due-month totals for total, marked paid, outstanding and overdue |
+| AT-12 Local offers | Sample screen implemented; browser test pending | Fictional examples labelled not redeemable; no partner agreements claimed |
 
-Automated results above refer to the 10 November 2026 run, not a new run. No completed interviews, verified payments, measured savings or partner contracts are claimed.
+Previously recorded automated results refer to the 10 November 2026 run. New bills and sample-benefits screens were added on 17 November 2026 and have not yet been browser-tested. No completed interviews, verified payments, measured savings or partner contracts are claimed.

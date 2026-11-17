@@ -1,14 +1,14 @@
 ## Scope legend
 
-Implemented = present in local code, with verification details in TASKS. Planned = product concept only.
+Implemented = present in local code; browser acceptance is pending where stated in TASKS. Planned = product concept only.
 
 | Stage | User action | Output | Status |
 | --- | --- | --- | --- |
 | Set up home | Enter tenancy, rent, deposit and landlord | Home record | Implemented; demo identity only |
 | Move in | Add room photos, conditions and notes | Draft report | Implemented |
 | Finalise | Lock report; later add dated notes | Fixed record plus addenda | Implemented |
-| Everyday bills | Enter bills; inspect due items; mark external payments | Monthly overview | Planned |
-| Local benefits | Browse offers; inspect terms and validity | Relevant discount details | Planned |
+| Everyday bills | Add/edit/delete bills; mark external payments and filter by due month | Monthly totals and overdue labels | Implemented; browser test pending |
+| Local benefits | Browse sample offers; inspect category, location, terms and expiry | Fictional offer examples | Implemented as samples; not redeemable |
 | Move out | Complete tasks and take room photos | Checklist and comparison | Implemented |
 | Deposit | Explicitly record keys returned, request and outcome | Dated history | Implemented |
 | Export | Open printable tenancy record | Print / Save as PDF | Implemented; output test pending |
@@ -22,8 +22,8 @@ flowchart TD
     A["Create tenancy"] --> B["Move-in report"]
     B --> C["Finalise and retain record"]
     C --> D["During tenancy"]
-    D --> E["Bills and monthly view · planned"]
-    D --> F["Local offers · planned"]
+    D --> E["Bills and monthly view · browser test pending"]
+    D --> F["Sample local offers · fictional"]
     D --> G["Move-out checklist and photos"]
     E --> D
     F --> D
@@ -32,4 +32,4 @@ flowchart TD
     I --> J["Export tenancy record"]
 ```
 
-This diagram describes the product concept and clearly labels the two planned areas. It does not represent verification of the current UI.
+The bills and local-benefits screens are implemented in the current code. Their browser acceptance tests are still pending. Offers in the demo are fictional and not redeemable.

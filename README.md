@@ -14,10 +14,10 @@ The intended audience is students, young adults and international tenants in Fin
 
 | Area | Intended value | Submission status |
 | --- | --- | --- |
-| Household bills | See due dates, payment labels and monthly totals together | Planned; manual tracking first |
+| Household bills | Add/edit/delete bills, see monthly due totals, and record payments made elsewhere | Implemented; browser test pending |
 | Apartment records | Find room-by-room move-in and move-out photos and notes | Implemented in local prototype |
 | Moving and deposit | Follow tasks and record deposit progress | Implemented; final browser tests pending |
-| Local benefits | Find relevant restaurant, grocery and service offers | Planned; no confirmed partners |
+| Local benefits | Browse restaurant, grocery and service examples with terms and expiry | Sample offers implemented; fictional only |
 
 ## Run the prototype
 
@@ -40,7 +40,7 @@ cd src
 python3 test_journey.py
 ```
 
-Automated checks passed on 10 November 2026 for report persistence, input rejection, ownership functions, finalisation, addenda, checklist storage and deposit history. The user confirmed database checks, setup/save/reload/high-deposit warning and move-in draft persistence. Full final browser tests and print layout remain pending.
+Automated checks passed on 10 November 2026 for report persistence, input rejection, ownership functions, finalisation, addenda, checklist storage and deposit history. The user confirmed database checks, setup/save/reload/high-deposit warning and move-in draft persistence. Bills and sample-benefits screens were added on 17 November 2026; their browser flows have not yet been independently verified. Final browser tests and print layout remain pending.
 
 ## Project documents
 
@@ -48,6 +48,6 @@ PRD defines the product vision and acceptance criteria. BRAINSTORM explains the 
 
 ## Limits and submission
 
-The current code demonstrates apartment records and deposit tracking. Bills, partner offers, actual payments and bank connections are not implemented. Payment labels, when added, will be self-reported. No confirmed local partnerships, rewards funding or measured savings are claimed. The record is a documentation aid, not legal advice or guaranteed legal evidence. Use fictional data only.
+The current code includes manual bill tracking, monthly totals, self-reported paid status, and a sample local-benefits screen alongside apartment records and deposit tracking. Sample offers are fictional and cannot be redeemed. No real partners, payment processing, bank connections, measured savings or confirmed rewards funding are included. The record is a documentation aid, not legal advice or guaranteed legal evidence. Use fictional data only.
 
 GitHub repository: https://github.com/tutimuti128/RentRecord. Moodle format, deadline and final submission must be checked by the author.
